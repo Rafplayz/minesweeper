@@ -9,6 +9,7 @@ let gridArr2D = [];
 
 let minesLeftGlobal;
 let gameOver;
+let hasGameBeenClicked = false;
 
 class Cell {
   isMine;
@@ -42,6 +43,11 @@ function onMouseUpCell(e) {
     if(e.button == 0) {
       if(cellElement.dataset.isFlagged == 0) {
         if (cell.isMine) {
+          if(!hasGameBeenClicked) {
+            startGame();
+            onMouseUpCell(e);
+            return;
+          }
           cellElement.style.backgroundColor = "red";
           gameOver = true;
           let i = 0;
@@ -55,6 +61,7 @@ function onMouseUpCell(e) {
           })
         }
         else {
+          hasGameBeenClicked = true;
           cellElement.innerText = mineCountAndColor(cellElement, parseInt(e.target.dataset.row), parseInt(e.target.dataset.column));
         }
       }
@@ -196,6 +203,7 @@ function resetGame() {
   cellArr2D = [];
   gridArr2D.forEach(arr => arr.forEach(element => document.querySelector(".grid").removeChild(element)));
   gridArr2D = [];
+  hasGameBeenClicked = false;
 
 }
 
