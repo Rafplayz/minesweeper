@@ -54,7 +54,7 @@
       1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
       gap: 6px;
     }
-    div.cell {
+    .cell {
       background-color: lightslategray;
       height: 35px;
       width: 35px;
@@ -63,6 +63,28 @@
       font-size: 22pt;
       color: green;
       cursor: default;
+    }
+    .cleared {
+      background-color: #4f5662;
+      color: purple; /* used if mine count above 5 */
+    }
+    .mines0 {
+      color: #ffffff00;
+    }
+    .mines1 {
+      color: lime;
+    }
+    .mines2 {
+      color: #3facff;
+    }
+    .mines3 {
+      color: #FF7F7F;
+    }
+    .mines4 {
+      color: darkred;
+    }
+    .mines5 {
+      color: yellow;
     }
   </style>
 </head>

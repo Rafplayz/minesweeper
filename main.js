@@ -55,6 +55,7 @@ function onMouseUpCell(e) {
             let j = 0;
             arr.forEach(cellv => {
               if(cellv.isMine) gridArr2D[i][j].style.backgroundColor = "red";
+              else {};
               j++;
             })
             i++;
@@ -62,7 +63,7 @@ function onMouseUpCell(e) {
         }
         else {
           hasGameBeenClicked = true;
-          cellElement.innerText = mineCountAndColor(cellElement, parseInt(e.target.dataset.row), parseInt(e.target.dataset.column));
+          cellElement.innerText = mineCountAndStyle(cellElement, parseInt(e.target.dataset.row), parseInt(e.target.dataset.column));
         }
       }
     }
@@ -93,33 +94,9 @@ function flagCell(cellElement) {
   }
 }
 
-function mineCountAndColor(selfElement, row, column) {
+function mineCountAndStyle(selfElement, row, column) {
   let mineCount = scoutForMines(parseInt(row), parseInt(column))
-  selfElement.style.backgroundColor = "#4f5662"
-
-  switch(mineCount) {
-  case 0: 
-    selfElement.style.color = "#ffffff00";
-    break;
-  case 1: 
-    selfElement.style.color = "lime";
-    break;
-  case 2: 
-    selfElement.style.color = "#3facff";
-    break;
-  case 3: 
-    selfElement.style.color = "lightred";
-    break;
-  case 4: 
-    selfElement.style.color = "darkred";
-    break;
-  case 5: 
-    selfElement.style.color = "yellow";
-    break;
-  default: 
-    selfElement.style.color = "purple";
-    break;
-  }
+  selfElement.classList.add("cleared", `mines${mineCount}`)
 
   return mineCount
 }
