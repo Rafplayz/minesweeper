@@ -54,7 +54,7 @@ function onMouseUpCell(e) {
           cellArr2D.forEach(arr => {
             let j = 0;
             arr.forEach(cellv => {
-              if(cellv.isMine) gridArr2D[i][j].style.backgroundColor = "red";
+              if(cellv.isMine) gridArr2D[i][j].classList.add("mine")
               else {};
               j++;
             })
@@ -86,10 +86,10 @@ function flagCell(cellElement) {
   if(cellElement.dataset.isFlagged == "1") {
     console.log("cell is flagged")
     cellElement.dataset.isFlagged = 0;
-    cellElement.style.backgroundColor = "lightslategray";
+    cellElement.classList.remove("flagged");
   }
   else {
-    cellElement.style.backgroundColor = "indianred";
+    cellElement.classList.add("flagged");
     cellElement.dataset.isFlagged = 1;
   }
 }
